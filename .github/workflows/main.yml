@@ -3,9 +3,9 @@ on: [push, pull_request]
 jobs:
   build-libxml2:
     runs-on: windows-latest
-    env:
-      # This isn't checked by default in MSYS2:
-      #CPPFLAGS: -I/usr/include
+    #env:
+    #  # This isn't checked by default in MSYS2:
+    #  CPPFLAGS: -I/usr/include
     defaults:
       run:
         shell: msys2 {0}
