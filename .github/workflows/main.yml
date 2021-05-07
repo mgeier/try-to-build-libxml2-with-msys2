@@ -22,7 +22,6 @@ jobs:
           git checkout v2.9.10
       - name: autogen.sh
         working-directory: libxml2
-        # --prefix
         run: |
           ./autogen.sh \
             --without-c14n \
@@ -68,3 +67,8 @@ jobs:
         working-directory: libxml2
         run: |
           make install
+      - name: check results
+        run: |
+          ls -lh /mingw64/include/libxml2/libxml
+          ls -lh /mingw64/bin/libxml*
+          ls -lh /mingw64/lib/libxml*
