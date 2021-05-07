@@ -15,6 +15,7 @@ jobs:
         with:
           release: false
       - name: git clone
+        shell: bash
         run: |
           git clone https://gitlab.gnome.org/GNOME/libxml2.git
           git checkout v2.9.10
