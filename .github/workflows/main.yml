@@ -1,0 +1,28 @@
+name: Build libxml2 with MSYS2
+on: [push, pull_request]
+jobs:
+  build-libxml2:
+    runs-on: windows-latest
+    env:
+      # This isn't checked by default in MSYS2:
+      #CPPFLAGS: -I/usr/include
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - name: Install MSYS2
+        uses: msys2/setup-msys2@v2
+        with:
+          release: false
+      - name: git clone
+        run: |
+          git clone https://gitlab.gnome.org/GNOME/libxml2.git
+          git checkout v2.9.10
+      - name: autogen.sh
+        working-directory: libxml2
+        run: |
+          ./autogen.sh
+      - name: configure
+        working-directory: libxml2
+        run: |
+          ./configure --help
